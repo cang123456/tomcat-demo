@@ -5,8 +5,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Test {
-    public static void main (String[] args) {
-        // Êı¾İ¿âÁ¬½ÓÏà¹ØĞÅÏ¢£¨ÇëÌæ»»ÎªÄãµÄÊµ¼ÊÅäÖÃ£©
+    public static void main(String[] args) {
+        // æ•°æ®åº“è¿æ¥ç›¸å…³ä¿¡æ¯ï¼ˆè¯·æ›¿æ¢ä¸ºä½ çš„å®é™…é…ç½®ï¼‰
         String url = "jdbc:mysql://localhost:3306/test";
         String username = "root";
         String password = "123456";
@@ -16,30 +16,30 @@ public class Test {
         ResultSet resultSet = null;
 
         try {
-            // »ñÈ¡Êı¾İ¿âÁ¬½Ó
+            // è·å–æ•°æ®åº“è¿æ¥
             connection = DriverManager.getConnection(url, username, password);
             statement = connection.createStatement();
 
-            // ²éÑ¯ emp ±í£¨Ê¹ÓÃĞ¡Ğ´±íÃû£¬Óë´´½¨Ê±±£³ÖÒ»ÖÂ£©
+            // æŸ¥è¯¢ emp è¡¨ï¼ˆä½¿ç”¨å°å†™è¡¨åï¼Œä¸åˆ›å»ºæ—¶ä¿æŒä¸€è‡´ï¼‰
             String sql = "select * from emp";
             resultSet = statement.executeQuery(sql);
 
-            // ±éÀú½á¹û¼¯£¨Ê¹ÓÃÊµ¼ÊµÄ×Ö¶ÎÃû emp_name¡¢emp_sex¡¢emp_age£©
+            // éå†ç»“æœé›†ï¼ˆä½¿ç”¨å®é™…çš„å­—æ®µå emp_nameã€emp_sexã€emp_ageï¼‰
             while (resultSet.next()) {
-                String name = resultSet.getString("emp_name");  // ĞŞÕı×Ö¶ÎÃû
-                String sex = resultSet.getString("emp_sex");    // ĞŞÕı×Ö¶ÎÃû
-                int age = resultSet.getInt("emp_age");          // ĞŞÕı×Ö¶ÎÃû£¬Ê¹ÓÃintÀàĞÍ
+                String name = resultSet.getString("emp_name");  // ä¿®æ­£å­—æ®µå
+                String sex = resultSet.getString("emp_sex");    // ä¿®æ­£å­—æ®µå
+                int age = resultSet.getInt("emp_age");          // ä¿®æ­£å­—æ®µåï¼Œä½¿ç”¨intç±»å‹
 
-                System.out.print("ĞÕÃû: " + name);
-                System.out.print("ĞÔ±ğ: " + sex);
-                System.out.print("ÄêÁä: " + age);
+                System.out.print("å§“å: " + name);
+                System.out.print("æ€§åˆ«: " + sex);
+                System.out.print("å¹´é¾„: " + age);
                 System.out.println();
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Êı¾İ¿â²Ù×÷Òì³£");
+            System.out.println("æ•°æ®åº“æ“ä½œå¼‚å¸¸");
         } finally {
-            // ¹Ø±Õ×ÊÔ´
+            // å…³é—­èµ„æº
             try {
                 if (resultSet != null) resultSet.close();
                 if (statement != null) statement.close();
